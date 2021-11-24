@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Card } from "react-native-elements";
-//import StudentInfo from "./StudentInfo";
+import StudentInfo from "./StudentInfo";
 
 class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Card>
-          <Card.Title>Teacher Comment Generator"</Card.Title>
+          <Card.Title>Teacher Comment Generator</Card.Title>
+          <Card.Divider />
+          <StudentInfo />
           <Card.Divider />
           <Directions />
         </Card>
