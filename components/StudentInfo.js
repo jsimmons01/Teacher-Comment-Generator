@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
-import { Button, Input } from "react-native-elements";
-
+import { Input, Button } from "react-native-elements";
 //import { COMMENTS } from "../comments";
 
 /*************************************************** TO DO**************************************************************************
@@ -32,8 +31,9 @@ class StudentInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      studentName: " ",
-      //   gender: " ",
+      studentName: "",
+      selectedGender: "",
+
       //   level: "On Grade Level",
       //   text: " ",
       //   comments: COMMENTS,
@@ -52,35 +52,31 @@ class StudentInfo extends Component {
   render() {
     return (
       <ScrollView>
-        <View>
+        <View style={styles.formRow}>
           <Input
+            style={styles.formItem}
             leftIcon={{ type: "font-awesome", name: "id-card" }}
             placeholder="Student Name"
             onChangeText={(value) => this.setState({ studentName: value })}
           />
         </View>
-
-        {/* <View>
-        //radio buttons for react native
-            <Input
-              type="radio"
-              name="gender"
-              value="boy"
-              checked={this.state.gender === "boy"}
-              onChange={this.handleInputChange}
-            />
-            <Label check>Boy</Label>
-          
-            <Input
-              type="radio"
-              name="gender"
-              value="girl"
-              checked={this.state.gender === "girl"}
-              onChange={this.handleInputChange}
-            />
-            <Label check>Girl</Label>
-
-        </View> */}
+        {/*togglebutton raised and color when pressed, flat and outlined when nnot pressed*/}
+        <View>
+          <Button
+            title="Boy"
+            onPress={
+              (() => this.setState({ selectedGender: "Boy" }),
+              console.log(this.state))
+            }
+          />
+          <Button
+            title="Girl"
+            onPress={
+              (() => this.setState({ selectedGender: "Girl" }),
+              console.log(this.state))
+            }
+          />
+        </View>
 
         {/* <View>
             //change to select for react native
@@ -102,7 +98,7 @@ class StudentInfo extends Component {
          
         </View> */}
         <View>
-          <Button>Submit</Button>
+          <Button title="Submit" />
         </View>
         {/* <View>
         //text input or just a view ?
@@ -123,8 +119,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 20,
   },
+
   formItem: {
     flex: 1,
+  },
+  formRadioTitle: {
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  genderButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
 
