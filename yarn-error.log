@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/jahmellasimmons/.nvm/versions/node/v14.17.5/bin/node /Users/jahmellasimmons/.nvm/versions/node/v14.17.5/bin/yarnpkg add react-natvie-elements@2.2.1
+  /Users/jahmellasimmons/.nvm/versions/node/v14.17.5/bin/node /Users/jahmellasimmons/.nvm/versions/node/v14.17.5/bin/yarnpkg add reaact-native-paper
 
 PATH: 
   /Users/jahmellasimmons/Library/Android/sdk/platform-tools:/Users/jahmellasimmons/.nvm/versions/node/v14.17.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jahmellasimmons/Library/Android/sdk/platform-tools:/Users/jahmellasimmons/.nvm/versions/node/v14.17.5/bin:/usr/local/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-natvie-elements: Not found
+  Error: https://registry.yarnpkg.com/reaact-native-paper: Not found
       at Request.params.callback [as _callback] (/Users/jahmellasimmons/.nvm/versions/node/v14.17.5/lib/node_modules/yarn/lib/cli.js:67029:18)
       at Request.self.callback (/Users/jahmellasimmons/.nvm/versions/node/v14.17.5/lib/node_modules/yarn/lib/cli.js:140883:22)
       at Request.emit (events.js:400:28)

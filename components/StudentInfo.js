@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet, Alert, Text } from "react-native";
 import { Input, Button } from "react-native-elements";
+import { RadioButton } from "react-native-paper";
 //import { COMMENTS } from "../comments";
 
 /*************************************************** TO DO**************************************************************************
@@ -32,7 +33,7 @@ class StudentInfo extends Component {
     super(props);
     this.state = {
       studentName: "",
-      selectedGender: "",
+      gender: "",
 
       //   level: "On Grade Level",
       //   text: " ",
@@ -48,6 +49,11 @@ class StudentInfo extends Component {
   //     ),
   //   });
   // }
+  selectedGender() {
+    this.setState({
+      gender: value,
+    });
+  }
 
   render() {
     return (
@@ -61,21 +67,17 @@ class StudentInfo extends Component {
           />
         </View>
         {/*togglebutton raised and color when pressed, flat and outlined when nnot pressed*/}
-        <View>
-          <Button
-            title="Boy"
-            onPress={
-              (() => this.setState({ selectedGender: "Boy" }),
-              console.log(this.state))
-            }
-          />
-          <Button
-            title="Girl"
-            onPress={
-              (() => this.setState({ selectedGender: "Girl" }),
-              console.log(this.state))
-            }
-          />
+        <View style={styles.formRow}>
+          <RadioButton.Group onValueChange={() => this.selectedGender}>
+            <View>
+              <RadioButton value="boy" />
+              <Text style={styles.formGenderButton}>Boy</Text>
+            </View>
+            <View>
+              <RadioButton value="girl" />
+              <Text style={styles.formGenderButton}>Girl</Text>
+            </View>
+          </RadioButton.Group>
         </View>
 
         {/* <View>
@@ -97,8 +99,27 @@ class StudentInfo extends Component {
             </Input>
          
         </View> */}
-        <View>
-          <Button title="Submit" />
+        <View style={styles.formRow}>
+          <Button
+            style={styles.formItem}
+            title="Submit"
+            onPress={() =>
+              Alert.alert(
+                "Student Information Received",
+                "Student Name: " +
+                  this.state.studentName +
+                  "\n" +
+                  "Gender: " +
+                  this.selectedGender +
+                  "\n",
+                [
+                  {
+                    text: "OK",
+                  },
+                ]
+              )
+            }
+          />
         </View>
         {/* <View>
         //text input or just a view ?
@@ -123,13 +144,14 @@ const styles = StyleSheet.create({
   formItem: {
     flex: 1,
   },
+  formGenderButton: {
+    backgroundColor: "darkgray",
+    padding: 10,
+    margin: 10,
+  },
   formRadioTitle: {
     fontWeight: "bold",
     textAlign: "center",
-  },
-  genderButtons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
   },
 });
 
