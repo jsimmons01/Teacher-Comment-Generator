@@ -17,6 +17,8 @@ import { RadioButton } from "react-native-paper";
     *update each section to a react native element
     *fix the button
     *create a function that submits the student info input 
+    *fix the radio buttons so that it's connected to state 
+    *https://callstack.github.io/react-native-paper/radio-button-group.html
     
                                      
 ************************************Aspirations*********************************
@@ -49,11 +51,6 @@ class StudentInfo extends Component {
   //     ),
   //   });
   // }
-  selectedGender() {
-    this.setState({
-      gender: value,
-    });
-  }
 
   render() {
     return (
@@ -68,14 +65,17 @@ class StudentInfo extends Component {
         </View>
         {/*togglebutton raised and color when pressed, flat and outlined when nnot pressed*/}
         <View style={styles.formRow}>
-          <RadioButton.Group onValueChange={() => this.selectedGender}>
+          <RadioButton.Group
+            onValueChange={(value) => this.setState({ gender: value })}
+            value={this.state.gender}
+          >
             <View>
+              <Text>Boy</Text>
               <RadioButton value="boy" />
-              <Text style={styles.formGenderButton}>Boy</Text>
             </View>
             <View>
+              <Text>Girl</Text>
               <RadioButton value="girl" />
-              <Text style={styles.formGenderButton}>Girl</Text>
             </View>
           </RadioButton.Group>
         </View>
@@ -110,7 +110,7 @@ class StudentInfo extends Component {
                   this.state.studentName +
                   "\n" +
                   "Gender: " +
-                  this.selectedGender +
+                  this.state.gender +
                   "\n",
                 [
                   {
